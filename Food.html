@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+
+  <style>
+
+
+  h1 {
+  position: relative;
+  padding-left: 1.5em;/*アイコン分のスペース*/
+  line-height: 1.4;
+    }
+
+  h1:before {
+  font-family: "Font Awesome 5 Free";
+  content: "🥑";/*アイコンのユニコード*/
+  font-weight: 900;
+  position: absolute;/*絶対位置*/
+  font-size: 1em;/*サイズ*/
+  left: 0;/*アイコンの位置*/
+  top: 0;/*アイコンの位置*/
+  color: #5ab9ff; /*アイコン色*/
+  font-weight: 900;
+  }
+
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>食品ロスを削減するカメラ「Fooss」</title>
+<meta name="description" content="CSS Gridで作るレスポンシブ対応のレイアウトサンプル">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://chocolat5.com/">
+<meta name="robots" content="noindex, nofollow">
+
+<style>
+  html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp,
+  small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+  }
+  ol, ul {
+    list-style: none;
+  }
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    empty-cells: show;
+  }
+
+  *, *:before, *:after {
+    border: 0;
+    outline: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: 62.5%;
+    width: 100%;
+    height: 100%;
+  }
+  body {
+    width: 100%;
+    height: 100%;
+    color: #444;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font: normal 1.4rem/1.4 'Work Sans','游ゴシック Medium', 'Yu Gothic Medium', YuGothic, '游ゴシック', "Hiragino Kaku Gothic ProN", 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, sans-serif;
+  }
+
+
+  @charset 'UTF-8';
+
+/* autoprefixer grid: autoplace */
+
+/* common
+====================================== */
+h1 {
+  padding: 1.5em;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.sample_sec {
+  max-width: 1300px;
+  margin: 80px auto;
+}
+
+.sample_headline {
+  margin: 0 1.5em 2em;
+  padding: 1em 0;
+  border-bottom: 1px solid #ccc;
+  font-size: 1.8rem;
+  font-weight: bold;
+  position: relative;
+  padding-left: 1.5em;/*アイコン分のスペース*/
+  line-height: 1.4;
+
+}
+
+
+
+.sample_headline:before {
+  font-family: "Font Awesome 5 Free";
+  content: "🥑";/*アイコンのユニコード*/
+  font-weight: 900;
+  position: absolute;/*絶対位置*/
+  font-size: 1em;/*サイズ*/
+  left: 0;/*アイコンの位置*/
+  top: 0;/*アイコンの位置*/
+  color: #5ab9ff; /*アイコン色*/
+  font-weight: 900;
+  }
+
+
+.btn {
+  display: inline-block;
+  margin: 1em 0 0;
+  padding: 1em 2.5em;
+  background-color: rgb(0, 137, 255);
+  color: rgb(255, 255, 255);
+  border-radius: 4px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: .05em;
+  text-decoration: none;
+  line-height: 1em;
+  cursor: pointer;
+}
+
+
+@media screen and ( min-width: 900px ) {
+  .sample_headline {
+    font-size: 2rem;
+  }
+}
+
+
+
+
+/* メインビジュアルにキャッチコピーを重ねる
+====================================== */
+.container_main_wrap {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+  grid-template-columns: 1fr;
+  -ms-grid-rows: auto;
+  grid-template-rows: auto;
+  grid-gap: 32px 0;
+}
+.container_main_wrap > *:nth-child(1) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+}
+
+.main_copy {
+  padding: 0 30px;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 2;
+  letter-spacing: .1em;
+}
+
+.main_img img {
+  width: 100%;
+  height: auto;
+}
+
+@media screen and ( min-width: 600px ) {
+  .container_main_wrap {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 3.125vw 1fr 3.125vw 1fr 3.125vw 1fr 3.125vw 1fr 3.125vw 1fr 3.125vw 1fr 3.125vw 1fr 3.125vw 1fr 3.125vw 1fr 3.125vw 1fr 3.125vw 1fr;
+    grid-template-columns: repeat(12, 1fr);
+    -ms-grid-rows: 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 32px 3.125vw;
+  }
+  .container_main_wrap > *:nth-child(1) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+  }
+  .container_main_wrap > *:nth-child(2) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+  }
+  .container_main_wrap > *:nth-child(3) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 5;
+  }
+  .container_main_wrap > *:nth-child(4) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 7;
+  }
+  .container_main_wrap > *:nth-child(5) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 9;
+  }
+  .container_main_wrap > *:nth-child(6) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 11;
+  }
+  .container_main_wrap > *:nth-child(7) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 13;
+  }
+  .container_main_wrap > *:nth-child(8) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 15;
+  }
+  .container_main_wrap > *:nth-child(9) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 17;
+  }
+  .container_main_wrap > *:nth-child(10) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 19;
+  }
+  .container_main_wrap > *:nth-child(11) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 21;
+  }
+  .container_main_wrap > *:nth-child(12) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 23;
+  }
+
+  .main_copy {
+    margin: 0;
+    padding: 0;
+
+    -ms-grid-column: 2;
+
+    -ms-grid-column-span: 6;
+
+    grid-column: 2 / 8;
+    -ms-grid-row: 1;
+    grid-row: 1;
+    -ms-grid-row-align: center;
+        align-self: center;
+    z-index: 2;
+  }
+
+  .main_img {
+    grid-column: 3 / -1;
+    -ms-grid-row: 1;
+    grid-row: 1;
+    z-index: 1;
+  }
+}
+
+@media screen and ( min-width: 900px ) {
+  .main_copy {
+    font-size: 3.2rem;
+  }
+}
+
+
+/* サムネイル付きのブログやニュース一覧
+====================================== */
+.articles_wrap {
+  padding: 0 40px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 5vw 1fr 5vw 1fr 5vw 1fr 5vw 1fr 5vw 1fr 5vw 1fr 5vw 1fr 5vw 1fr 5vw 1fr 5vw 1fr 5vw 1fr;
+  grid-template-columns: repeat(12, 1fr);
+  -ms-grid-rows: auto 32px 1fr;
+  grid-template-rows: auto 1fr;
+  grid-gap: 32px 5vw;
+}
+.articles_wrap > *:nth-child(1) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+}
+.articles_wrap > *:nth-child(2) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+}
+.articles_wrap > *:nth-child(3) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 5;
+}
+.articles_wrap > *:nth-child(4) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 7;
+}
+.articles_wrap > *:nth-child(5) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 9;
+}
+.articles_wrap > *:nth-child(6) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 11;
+}
+.articles_wrap > *:nth-child(7) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 13;
+}
+.articles_wrap > *:nth-child(8) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 15;
+}
+.articles_wrap > *:nth-child(9) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 17;
+}
+.articles_wrap > *:nth-child(10) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 19;
+}
+.articles_wrap > *:nth-child(11) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 21;
+}
+.articles_wrap > *:nth-child(12) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 23;
+}
+.articles_wrap > *:nth-child(13) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+}
+.articles_wrap > *:nth-child(14) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 3;
+}
+.articles_wrap > *:nth-child(15) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 5;
+}
+.articles_wrap > *:nth-child(16) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 7;
+}
+.articles_wrap > *:nth-child(17) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 9;
+}
+.articles_wrap > *:nth-child(18) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 11;
+}
+.articles_wrap > *:nth-child(19) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 13;
+}
+.articles_wrap > *:nth-child(20) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 15;
+}
+.articles_wrap > *:nth-child(21) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 17;
+}
+.articles_wrap > *:nth-child(22) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 19;
+}
+.articles_wrap > *:nth-child(23) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 21;
+}
+.articles_wrap > *:nth-child(24) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 23;
+}
+
+.articles_head {
+  grid-column: 1 / -1;
+  -ms-grid-row: 1;
+  grid-row: 1;
+
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.article_title {
+  margin: .5em 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.article_cat {
+  opacity: .7;
+  font-size: 1.3rem;
+}
+
+.article_date {
+  opacity: .7;
+  margin: .5em 0 0;
+  font-size: 1.3rem;
+}
+
+.article {
+  -ms-grid-column-span: 6;
+  grid-column: span 6;
+
+  color: #444;
+  text-decoration: none;
+}
+
+.article_thumb {
+  width: 100%;
+  height: 0;
+  margin-bottom: 1em;
+  padding-top: 55.25%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+@media screen and ( min-width: 600px ) {
+  .articles_wrap {
+    padding: 0 50px;
+
+    grid-gap: 32px 3.125vw;
+  }
+
+  .article {
+    -ms-grid-column-span: 3;
+    grid-column: span 3;
+  }
+
+  .article_title {
+    font-size: 1.6rem;
+  }
+}
+
+
+
+
+/* 見出しとテキストと補助的な写真のセット
+====================================== */
+.container_template_area {
+  padding: 0 40px;
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas:
+    "head"
+    "txt"
+    "img";
+  -ms-grid-columns: 1fr;
+  grid-template-columns: 1fr;
+  -ms-grid-rows: auto 1em 1fr;
+  grid-template-rows: auto 1fr;
+  grid-gap: 1em 32px;
+}
+
+.container_head {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: head;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.8;
+}
+
+.container_img {
+  -ms-grid-row: 5;
+  -ms-grid-column: 1;
+  grid-area: img;
+}
+
+.container_img img {
+  width: 100%;
+  height: auto;
+}
+
+.container_txt {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: txt;
+  font-size: 1.6rem;
+  line-height: 2;
+}
+
+@media screen and ( min-width: 900px ) {
+  .container_template_area {
+    padding: 0 50px;
+
+        grid-template-areas:
+      "img head"
+      "img txt";
+    -ms-grid-columns: calc(55% - 25px) 56px calc(45% - 25px);
+    grid-template-columns: calc(55% - 25px) calc(45% - 25px);
+    -ms-grid-rows: auto 1em 1fr;
+    grid-template-rows: auto 1fr;
+    grid-gap: 1em 56px;
+  }
+
+  .container_head {
+    font-size: 2.8rem;
+  }
+  .container_head {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+  }
+  .container_img {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 3;
+    -ms-grid-column: 1;
+  }
+  .container_txt {
+    -ms-grid-row: 3;
+    -ms-grid-column: 3;
+  }
+}
+
+
+
+
+/* ブロークングリッドレイアウト
+====================================== */
+.container_broken {
+  padding: 0 40px;
+
+  display: -ms-grid;
+
+  display: grid;
+  -ms-grid-columns: 1fr;
+  grid-template-columns: 1fr;
+  grid-gap: 32px 0;
+}
+
+.broken_item_name {
+  margin: .5em 0 0;
+  font-size: 1.5rem;
+  line-height: 1.4;
+}
+
+.broken_item_img img {
+  width: 100%;
+  height: auto;
+}
+
+@media screen and ( min-width: 600px ) {
+  .container_broken {
+    padding: 0 50px;
+    -ms-grid-columns: 1fr 3.125vw 1fr 3.125vw 1fr 3.125vw 1fr 3.125vw 1fr 3.125vw 1fr 3.125vw 1fr 3.125vw 1fr 3.125vw 1fr 3.125vw 1fr 3.125vw 1fr 3.125vw 1fr;
+    grid-template-columns: repeat(12, 1fr);
+    -ms-grid-rows: 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 32px 3.125vw;
+  }
+  .container_broken > *:nth-child(1) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+  }
+  .container_broken > *:nth-child(2) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+  }
+  .container_broken > *:nth-child(3) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 5;
+  }
+  .container_broken > *:nth-child(4) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 7;
+  }
+  .container_broken > *:nth-child(5) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 9;
+  }
+  .container_broken > *:nth-child(6) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 11;
+  }
+  .container_broken > *:nth-child(7) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 13;
+  }
+  .container_broken > *:nth-child(8) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 15;
+  }
+  .container_broken > *:nth-child(9) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 17;
+  }
+  .container_broken > *:nth-child(10) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 19;
+  }
+  .container_broken > *:nth-child(11) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 21;
+  }
+  .container_broken > *:nth-child(12) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 23;
+  }
+
+  .broken_item1 {
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 4;
+    grid-column: 2 / span 4;
+    -ms-grid-row-align: center;
+        align-self: center;
+  }
+
+  .broken_item2 {
+    grid-column: 8 / -1;
+    -ms-grid-row-align: center;
+        align-self: center;
+  }
+
+  .broken_item3 {
+    -ms-grid-column: 7;
+    -ms-grid-column-span: 4;
+    grid-column: 7 / span 4;
+    -ms-grid-row-align: center;
+        align-self: center;
+  }
+}
+
+
+
+/* footer
+====================================== */
+.footer {
+  padding: 40px;
+  background: #eee;
+
+  display: -ms-grid;
+
+  display: grid;
+  -ms-grid-columns: 1fr 24px 1fr;
+  grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: auto;
+  grid-template-rows: auto;
+  grid-gap: 24px 24px;
+}
+.footer > *:nth-child(1) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+}
+.footer > *:nth-child(2) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+}
+
+.footer_logo_wrap,
+.footer_legal,
+.footer_copyright,
+.footer_nav {
+  grid-column: 1 / -1;
+}
+
+.footer_nav {
+  margin: 0 0 -24px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.footer_nav_list {
+  width: 48%;
+  margin: 0 0 24px;
+}
+
+.footer_nav span {
+  display: inline-block;
+  margin-bottom: 1em;
+  font-weight: bold;
+}
+
+.footer_nav li {
+  margin: 0 0 .4em;
+}
+
+.footer a {
+  color: #444;
+  text-decoration: none;
+}
+
+.footer_logo {
+  margin: 0 0 .5em;
+  font-size: 3.2rem;
+  font-weight: bold;
+}
+
+.footer_legal {
+  padding-top: 24px;
+  border-top: 1px solid #ccc;
+}
+
+@media screen and ( min-width: 960px ) {
+  .footer {
+    padding: 60px 50px;
+
+    -ms-grid-columns: 1fr 3.125vw 1fr 3.125vw 1fr 3.125vw 1fr 3.125vw 1fr 3.125vw 1fr 3.125vw 1fr 3.125vw 1fr 3.125vw 1fr 3.125vw 1fr 3.125vw 1fr 3.125vw 1fr;
+
+    grid-template-columns: repeat(12, 1fr);
+    -ms-grid-rows: 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 32px 3.125vw;
+  }
+  .footer > *:nth-child(1) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+  }
+  .footer > *:nth-child(2) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+  }
+  .footer > *:nth-child(3) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 5;
+  }
+  .footer > *:nth-child(4) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 7;
+  }
+  .footer > *:nth-child(5) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 9;
+  }
+  .footer > *:nth-child(6) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 11;
+  }
+  .footer > *:nth-child(7) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 13;
+  }
+  .footer > *:nth-child(8) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 15;
+  }
+  .footer > *:nth-child(9) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 17;
+  }
+  .footer > *:nth-child(10) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 19;
+  }
+  .footer > *:nth-child(11) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 21;
+  }
+  .footer > *:nth-child(12) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 23;
+  }
+
+  .footer_logo_wrap {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 4;
+    grid-column: 1 / span 4;
+  }
+
+  .footer_nav {
+    grid-column: 6 / -1;
+  }
+
+  .footer_nav_list {
+    width: calc(100% / 3);
+  }
+
+
+  .footer_legal {
+    grid-row: -1;
+  }
+
+  .footer_legal li {
+    display: inline-block;
+    margin: 0 2em 0 0;
+  }
+
+  .footer_copyright {
+    grid-row: -1;
+    -ms-grid-column-align: end;
+        justify-self: end;
+    -ms-grid-row-align: end;
+        align-self: end;
+  }
+}
+
+
+  </style>
+
+  </head>
+  
+
+
+
+
+ 
+
+  
+
+
+  <body>
+    <!-- ここから下はTeachable Machineで生成したコードをコピペして改変したもの -->
+  
+
+
+    <section id="#sample02" class="sample_sec">
+    <h2 class="sample_headline">「Fooss」-食品ロスを削減するカメラ-</h2>
+    <section class="container_template_area">
+      <h3 class="container_head">Foossとは？</h3>
+      <div class="container_txt">
+        <p>食品ロス問題を削減させていくために、消費者、事業者目線から減らしていく。カメラを使って食べ物が食べれるか？食べごろか、食べごろではないか？表せてくれるアプリケーション。</br>仕組みは、画像とその食べ物の水分量を関連付けて内部の状態も推定する。IoTデバイス版もありそこでは画像とセンサーも用いている。</br>現在、認識できる食べ物</p>
+        <a href="https://script.google.com/a/macros/g.neec.ac.jp/s/AKfycbwNGiuX7Oln7_OAzF-mM2ek5d-qs-AbZonGyElf1YY/dev" class="btn">Avocado🥑</a>
+      </div>
+      <figure class="container_img">
+        <img src="https://i.pinimg.com/736x/96/53/2b/96532ba5ccc4bf761b230495e17b931c.jpg" alt="">
+      </figure>
+    </section>
+  </section>
+
+  <section id="#sample03" class="sample_sec">
+    <h2 class="sample_headline">保存方法選択してください</h2>
+    <section class="articles_wrap">
+      <h3 class="articles_head">Preservation method</h3>
+      <a href="https://script.google.com/a/macros/g.neec.ac.jp/s/AKfycbxv3T-gHyle0SxeorCObeKLLhpW139sZ3m6i39D54_eGiGGEHXF9kXq/exec" class="article">
+        <div class="article_thumb" style="background-image: url(https://kawaii-sozai.com/wp-content/uploads/2017/04/banana.jpg)"></div>
+        <p class="article_cat">At normal temperature</p>
+        <p class="article_title">バナナの画像を押してください！</br> 「常温」でバナナを認識することができます</p>
+        <p class="article_date">2020.02.07</p>
+      </a>
+      <a href="https://script.google.com/a/macros/g.neec.ac.jp/s/AKfycbwNGiuX7Oln7_OAzF-mM2ek5d-qs-AbZonGyElf1YY/dev" class="article">
+        <div class="article_thumb" style="background-image: url(https://image.shutterstock.com/image-illustration/hand-drawn-watercolor-illustration-tomato-260nw-1739129447.jpg)"></div>
+        <p class="article_cat">Refrigeratee</p>
+        <p class="article_title">トマトの画像を押してください！</br>「冷蔵」でバナナとトマトを認識することができます</p>
+        <p class="article_date">2020.02.07</p>
+      </a>
+      <a href="" class="article">
+        <div class="article_thumb" style="background-image: url(https://image.shutterstock.com/image-illustration/komatsuna-food-watercolor-handpainted-illustration-260nw-1867928203.jpg)"></div>
+        <p class="article_cat">broccoli</p>
+        <p class="article_title">ブロッコリーの画像を押してください！</br>現在、ブロッコリーの認識を追加中です。</p>
+        <p class="article_date">2020.02.07</p>
+      </a>
+      <a href="" class="article">
+        <div class="article_thumb" style="background-image: url(https://www.sozailab.jp/db_img/sozai/11962/1b4cae6aafb1694db0561a90451dae17.png)"></div>
+        <p class="article_cat"></p>
+        <p class="article_title">サツマイモも画像を押してください！</br>現在、認識する食べ物を追加中です</p>
+        <p class="article_date">202002.07</p>
+      </a>
+    </section>
+  </section>
+　
+
+    
+  
+ 
+    </body>
+  </html>
